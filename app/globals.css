@@ -1,0 +1,94 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-ink: #1a1512;
+  --color-ink-soft: #2a211c;
+  --color-gold: #b8893b;
+  --color-gold-light: #dcb870;
+  --color-gold-dark: #8a6420;
+  --color-cream: #faf5ea;
+  --color-sand: #efe6d3;
+  --color-clay: #9c4a2f;
+  --font-sans: "Cairo", system-ui, sans-serif;
+  --font-display: "Reem Kufi", "Amiri", serif;
+  --font-serif: "Amiri", serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  background: var(--color-cream);
+  color: var(--color-ink);
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: var(--color-gold);
+  color: white;
+}
+
+.font-display {
+  font-family: var(--font-display);
+}
+
+.pattern-gold {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Cg fill='none' stroke='%23b8893b' stroke-width='1'%3E%3Crect x='20' y='20' width='40' height='40'/%3E%3Crect x='20' y='20' width='40' height='40' transform='rotate(45 40 40)'/%3E%3Ccircle cx='40' cy='40' r='7'/%3E%3Cpath d='M0 0L12 12M80 0L68 12M0 80L12 68M80 80L68 68'/%3E%3C/g%3E%3C/svg%3E");
+  background-size: 80px 80px;
+}
+
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-bold transition duration-200 cursor-pointer disabled:cursor-not-allowed disabled:opacity-60;
+  }
+  .btn-gold {
+    @apply bg-gradient-to-br from-gold-light to-gold text-ink shadow-[0_8px_24px_-8px_rgba(184,137,59,0.7)] hover:-translate-y-0.5 hover:brightness-105;
+  }
+  .btn-dark {
+    @apply bg-ink text-cream hover:bg-ink-soft hover:-translate-y-0.5;
+  }
+  .btn-outline {
+    @apply border border-gold/60 text-ink hover:bg-gold/10;
+  }
+  .btn-outline-light {
+    @apply border border-gold-light/60 text-cream hover:bg-gold/20;
+  }
+  .btn-wa {
+    @apply bg-[#1faa59] text-white hover:bg-[#188a49] hover:-translate-y-0.5;
+  }
+  .field {
+    @apply w-full rounded-xl border border-sand bg-white px-4 py-2.5 text-sm outline-none transition focus:border-gold focus:ring-2 focus:ring-gold/20;
+  }
+  .section-title {
+    @apply font-display text-3xl font-bold md:text-4xl;
+  }
+}
+
+@keyframes float-pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(31, 170, 89, 0.55);
+  }
+  70% {
+    box-shadow: 0 0 0 16px rgba(31, 170, 89, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(31, 170, 89, 0);
+  }
+}
+
+.wa-pulse {
+  animation: float-pulse 2.4s infinite;
+}
+
+@keyframes slow-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.slow-spin {
+  animation: slow-spin 90s linear infinite;
+  transform-origin: center;
+}
