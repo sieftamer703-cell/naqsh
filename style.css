@@ -1,0 +1,112 @@
+:root {
+  --brown: #49362f;
+  --brown-deep: #352721;
+  --ivory: #f4efd9;
+  --muted: #c9bca7;
+  --gold: #b99a69;
+  --line: rgba(244, 239, 217, .17);
+}
+* { box-sizing: border-box; }
+html { min-height: 100%; scroll-behavior: smooth; }
+body {
+  margin: 0;
+  min-height: 100vh;
+  color: var(--ivory);
+  background:
+    radial-gradient(ellipse at 50% 5%, rgba(185,154,105,.15), transparent 36rem),
+    linear-gradient(155deg, #49362f 0%, #3d2d27 52%, #30231f 100%);
+  font-family: "Cairo", Tahoma, Arial, sans-serif;
+  overflow-x: hidden;
+}
+.page-shell {
+  position: relative;
+  isolation: isolate;
+  width: min(100% - 32px, 510px);
+  min-height: 100vh;
+  margin: 0 auto;
+  padding: 52px 0 28px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+.ambient {
+  position: fixed;
+  z-index: -1;
+  width: 260px; height: 260px;
+  border: 1px solid rgba(185,154,105,.09);
+  border-radius: 50%;
+  pointer-events: none;
+}
+.ambient-one { top: 8%; right: -190px; box-shadow: 0 0 0 24px rgba(185,154,105,.018), 0 0 0 48px rgba(185,154,105,.014); }
+.ambient-two { bottom: 5%; left: -210px; width: 320px; height: 320px; }
+.profile { text-align: center; margin-bottom: 34px; }
+.logo-frame {
+  width: 174px;
+  height: 174px;
+  margin: 0 auto 17px;
+  overflow: hidden;
+  border-radius: 3px;
+  background: var(--brown);
+  box-shadow: 0 16px 42px rgba(0,0,0,.2), 0 0 0 1px rgba(244,239,217,.12);
+}
+.logo { display: block; width: 100%; height: 100%; object-fit: cover; }
+h1 { margin: 0; color: var(--ivory); font-size: 25px; font-weight: 700; letter-spacing: 1.2px; }
+h1 span, footer span { color: var(--gold); padding: 0 4px; }
+.ornament { display: flex; align-items: center; justify-content: center; gap: 10px; margin-top: 10px; color: var(--gold); }
+.ornament span { width: 38px; height: 1px; background: linear-gradient(90deg, transparent, var(--gold)); }
+.ornament span:last-child { transform: rotate(180deg); }
+.ornament i { font-style: normal; font-size: 10px; }
+.link-section { margin-top: 8px; }
+.section-heading { display: flex; align-items: center; gap: 12px; margin: 0 3px 13px; color: var(--muted); font-size: 13px; font-weight: 600; }
+.section-heading::before, .section-heading::after { content: ""; flex: 1; height: 1px; background: var(--line); }
+.link-list { display: grid; gap: 11px; }
+.link-card {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 58px;
+  padding: 12px 18px;
+  border: 1px solid rgba(244,239,217,.17);
+  border-radius: 13px;
+  color: var(--ivory);
+  background: linear-gradient(120deg, rgba(255,255,255,.075), rgba(255,255,255,.025));
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 600;
+  transition: transform .22s ease, border-color .22s ease, background .22s ease, box-shadow .22s ease;
+  box-shadow: 0 7px 20px rgba(0,0,0,.08);
+}
+.link-card:hover, .link-card:focus-visible {
+  transform: translateY(-2px);
+  border-color: rgba(185,154,105,.72);
+  background: rgba(185,154,105,.13);
+  box-shadow: 0 10px 25px rgba(0,0,0,.16);
+  outline: none;
+}
+.link-card:active { transform: scale(.99); }
+.link-card .symbol {
+  position: absolute;
+  right: 18px;
+  width: 23px; height: 23px;
+  display: grid; place-items: center;
+  color: var(--gold);
+}
+.link-card .symbol svg { width: 21px; height: 21px; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+.link-card .arrow { position: absolute; left: 18px; color: rgba(244,239,217,.48); font-size: 18px; }
+.payment-section { margin-top: 30px; }
+.payment-card { border-color: rgba(185,154,105,.32); }
+.payment-card .symbol { color: var(--ivory); }
+.payment-card.vodafone { background: linear-gradient(110deg, rgba(190,47,58,.2), rgba(255,255,255,.035)); }
+.payment-card.instapay { background: linear-gradient(110deg, rgba(185,154,105,.19), rgba(255,255,255,.035)); }
+.payment-note { margin: 10px 3px 0; color: var(--muted); text-align: center; font-size: 11px; }
+footer { margin-top: auto; padding-top: 42px; text-align: center; color: rgba(244,239,217,.55); font-size: 11px; letter-spacing: .5px; }
+@media (min-width: 700px) {
+  .page-shell { padding-top: 64px; padding-bottom: 34px; }
+  .logo-frame { width: 190px; height: 190px; }
+  h1 { font-size: 28px; }
+  .link-card { min-height: 62px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; }
+}
